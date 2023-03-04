@@ -1,0 +1,11 @@
+.img {
+  width: 90px;
+  height: 90px;
+  border-radius: 30px;
+}
+.mainDivUsers {
+  background-color: cadetblue;
+}
+.selectedPage {
+  font-weight: bold;
+}

@@ -1,0 +1,22 @@
+.dialogs {
+  background-color: cadetblue;
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+}
+
+.dialogsItems {
+  padding: 20px;
+}
+.messages {
+  padding: 20px;
+}
+.items .activeLink {
+  color: gold;
+}
+.img {
+  height: 50px;
+  width: 50px;
+
+  border-radius: 30px;
+  margin-right: 10px;
+}

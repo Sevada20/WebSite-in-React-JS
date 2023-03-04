@@ -1,0 +1,12 @@
+.nameDiv {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 1.5rem;
+  background-color: blue;
+}
+.sitebarContainer {
+  margin-left: 20px;
+}
+.flex {
+  display: flex;
+}
