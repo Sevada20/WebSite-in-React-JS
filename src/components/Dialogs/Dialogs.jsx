@@ -1,6 +1,7 @@
 import { Message } from "./Message/Message";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
+import { withAuthRedirectCopy } from "../../hoc/withAuthRedirectCopy";
 
 function Dialogs(props) {
   return (
@@ -28,4 +29,4 @@ function Dialogs(props) {
     </div>
   );
 }
-export default Dialogs;
+export default withAuthRedirectCopy(Dialogs);

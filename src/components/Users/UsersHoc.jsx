@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { withAuthRedirectCopy } from "../../hoc/withAuthRedirectCopy";
 import {
   followThunkCreator,
   getUsersThunkCreator,
@@ -84,4 +85,4 @@ const UsersHoc = () => {
     />
   );
 };
-export default UsersHoc;
+export default withAuthRedirectCopy(UsersHoc);

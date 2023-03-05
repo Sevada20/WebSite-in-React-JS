@@ -1,21 +1,11 @@
-import axios from "axios";
 import { Component } from "react";
 import { connect } from "react-redux";
-import { setUserDataAC } from "../../redux/authReducer";
+import { getAuthUsersDataThunkCreator } from "../../redux/authReducer";
 import Header from "./Header";
 
 class HeaderHoc extends Component {
   componentDidMount() {
-    axios
-      .get("https://social-network.samuraijs.com/api/1.0/auth/me", {
-        withCredentials: true,
-      })
-      .then((response) => {
-        const { id, email, login } = response.data.data;
-        if (response.data.resultCode === 0) {
-          this.props.setUserDataAC(id, email, login);
-        }
-      });
+    this.props.getAuthUsersDataThunkCreator();
   }
 
   render() {
@@ -27,7 +17,7 @@ const mapStateToProps = (state) => ({
   login: state.auth.login,
 });
 const mapDispatchToProps = {
-  setUserDataAC,
+  getAuthUsersDataThunkCreator,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderHoc);

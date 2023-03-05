@@ -17,6 +17,7 @@ function App() {
         <Route path="/dialogs" element={<DialogsHok />} />
         <Route path="/profile/:userId?" element={<ProfileContainer />} />
         <Route path="/users" element={<UsersHoc />} />
+        <Route path="/login" element={<h1>Login</h1>} />
       </Routes>
     </div>
   );

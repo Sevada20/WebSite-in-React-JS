@@ -21,4 +21,14 @@ export const userApi = {
   getUnFollow(userId) {
     return instance.post(`follow/${userId}`);
   },
+
+  getProfile(userId) {
+    return instance.get(`profile/${userId}`);
+  },
+};
+
+export const authApi = {
+  me() {
+    return instance.get("auth/me");
+  },
 };
