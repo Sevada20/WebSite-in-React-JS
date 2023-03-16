@@ -1,5 +1,4 @@
 const newMessage = "newMessage";
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 
 const initialState = {
   dialogsData: [
@@ -13,7 +12,6 @@ const initialState = {
     { id: 2, message: "How are you" },
     { id: 3, message: "Yo" },
   ],
-  newMessageText: "react/redux",
 };
 
 const messagePageReducer = (state = initialState, action) => {
@@ -21,34 +19,22 @@ const messagePageReducer = (state = initialState, action) => {
     case newMessage:
       const messageObj = {
         id: Math.random(),
-        message: state.newMessageText,
+        message: action.newMessageText,
       };
       return {
         ...state,
-        newMessageText: "",
         messagesData: [...state.messagesData, messageObj],
       };
 
-    case UPDATE_NEW_MESSAGE_TEXT:
-      return {
-        ...state,
-        newMessageText: action.messageText,
-      };
     default:
       return state;
   }
 };
 
-export const newMessageActionCreator = () => {
+export const newMessageActionCreator = (newMessageText) => {
   return {
     type: newMessage,
-  };
-};
-
-export const updateNewMessageTextActionCreator = (text) => {
-  return {
-    type: UPDATE_NEW_MESSAGE_TEXT,
-    messageText: text,
+    newMessageText,
   };
 };
 

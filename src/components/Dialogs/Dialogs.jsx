@@ -2,8 +2,22 @@ import { Message } from "./Message/Message";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import { withAuthRedirectCopy } from "../../hoc/withAuthRedirectCopy";
-
+import { Field, Form, Formik } from "formik";
+import * as Yup from "yup";
 function Dialogs(props) {
+  console.log(props);
+  const initialValues = { message: "" };
+  const validationSchema = Yup.object({
+    message: Yup.string()
+      .typeError("Должно быть строкой")
+      .required("This field is required"),
+  });
+
+  const onSubmit = (values, { resetForm }) => {
+    props.newMessages(values.message);
+    resetForm();
+  };
+
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>
@@ -20,11 +34,25 @@ function Dialogs(props) {
         {props.messagePage.messagesData.map((message) => (
           <Message key={message.id} message={message.message} />
         ))}
-        <textarea
-          value={props.messagePage.newMessageText}
-          onChange={(e) => props.updateTextMess(e.target.value)}
-        />
-        <button onClick={props.newMessages}>addMessage</button>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+        >
+          {({ errors, touched }) => (
+            <Form>
+              <Field
+                name="message"
+                component="textarea"
+                placeholder="enter your message"
+              />
+              {errors.message && touched.message ? (
+                <div className="error-message">{errors.message}</div>
+              ) : null}
+              <button type="submit">Отправить</button>
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   );

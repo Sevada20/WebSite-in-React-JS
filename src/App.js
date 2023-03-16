@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import DialogsHok from "./components/Dialogs/DialogsHok";
 import HeaderHoc from "./components/Header/HeaderHoc";
+import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import UsersHoc from "./components/Users/UsersHoc";
@@ -17,7 +18,7 @@ function App() {
         <Route path="/dialogs" element={<DialogsHok />} />
         <Route path="/profile/:userId?" element={<ProfileContainer />} />
         <Route path="/users" element={<UsersHoc />} />
-        <Route path="/login" element={<h1>Login</h1>} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

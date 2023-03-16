@@ -1,5 +1,6 @@
 import s from "./ProfileInfo.module.css";
-const ProfileInfo = ({ profile }) => {
+import ProfileStatus from "./ProfileStatus";
+const ProfileInfo = ({ profile, status, updateStatus }) => {
   if (!profile) {
     return <h1>Loading</h1>;
   }
@@ -10,7 +11,7 @@ const ProfileInfo = ({ profile }) => {
       </div>
       <div className={s.discriptionBlock}>
         <img src={profile.photos.small} />
-        ava + description
+        <ProfileStatus statusProp={status} updateStatus={updateStatus} />
       </div>
     </div>
   );
